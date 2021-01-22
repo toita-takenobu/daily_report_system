@@ -50,6 +50,7 @@ public class Report {
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
+
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
@@ -93,6 +94,7 @@ public class Report {
         this.content = content;
     }
 
+
     public Timestamp getCreated_at() {
         return created_at;
     }
@@ -100,6 +102,8 @@ public class Report {
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
+
+
 
     public Timestamp getUpdated_at() {
         return updated_at;
