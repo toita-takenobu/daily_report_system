@@ -25,6 +25,9 @@ import utils.DBUtil;
 public class ReportsCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+
+
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,6 +46,7 @@ public class ReportsCreateServlet extends HttpServlet {
 
             Report r = new Report();
 
+
             r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
 
             Date report_date = new Date(System.currentTimeMillis());
@@ -55,6 +59,12 @@ public class ReportsCreateServlet extends HttpServlet {
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
 
+
+            r.getGood_count();
+            r.setGood_count(0);
+
+
+
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
             r.setUpdated_at(currentTime);
@@ -66,6 +76,10 @@ public class ReportsCreateServlet extends HttpServlet {
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("report", r);
                 request.setAttribute("errors", errors);
+                request.setAttribute("good_count", request.getSession());
+
+
+
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
                 rd.forward(request, response);
@@ -78,6 +92,11 @@ public class ReportsCreateServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/reports/index");
             }
+
             }
+
+
+
+            }
+
     }
-}
